@@ -63,9 +63,11 @@ module.exports = function JestWorkerPlugin(options) {
         },
         context: {
             shutdown: (resolver, wire) => {
+                console.log('ON SHUTDOWN.....');
                 resolver.resolve(closeWorkers());
             },
             error: (resolver, wire, err) => {
+                console.log('ON ERROR.....');
                 resolver.resolve(closeWorkers());
             }
         }
