@@ -13,6 +13,7 @@
     "jest-worker": "^26.6.2"
   },
   "devDependencies": {
+    "underscore": "^1.13.1",
     "wire": "github:cujojs/wire#0.10.11"
   }
 }
