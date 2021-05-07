@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test"
+    "test": "tap --no-coverage"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
     "jest-worker": "^26.6.2"
   },
   "devDependencies": {
+    "tap": "^15.0.9",
     "underscore": "^1.13.1",
     "wire": "github:cujojs/wire#0.10.11"
   }

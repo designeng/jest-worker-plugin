@@ -1,3 +1,4 @@
+const t = require('tap');
 const wire = require('wire');
 const _ = require('underscore');
 const JestWorkerPlugin = require('..');
@@ -30,7 +31,7 @@ wire({
     result: {
         create: {
             module: (worker) => {
-                return worker.calculate(10)
+                return worker.calculate(8)
             },
             args: [
                 {$ref: 'worker'}
@@ -53,7 +54,8 @@ wire({
 }).then(context => {
     const { result } = context;
 
-    console.log('DONE', result);
+    t.type(result, 'number');
+    t.equal(result, 21);
 
     const closeUp = async () => {
         context.destroy().then(() => {
@@ -61,7 +63,7 @@ wire({
         });
     }
 
-    // closeUp();
+    closeUp();
 
     process.on('SIGINT', closeUp);
 }).catch(error => {
