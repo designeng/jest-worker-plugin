@@ -37,19 +37,6 @@ wire({
                 {$ref: 'worker'}
             ]
         }
-    },
-
-    holdWiring: {
-        create: {
-            module: () => {
-                return new Promise(resolve => {
-                    setTimeout(resolve, 1000);
-                })
-            },
-            args: [
-                {$ref: 'worker'}
-            ]
-        }
     }
 }).then(context => {
     const { result } = context;
