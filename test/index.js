@@ -1,4 +1,5 @@
 const wire = require('wire');
+const _ = require('underscore');
 const JestWorkerPlugin = require('..');
 
 wire({
@@ -29,7 +30,7 @@ wire({
     result: {
         create: {
             module: (worker) => {
-                return worker.calculate(50)
+                return worker.calculate(10)
             },
             args: [
                 {$ref: 'worker'}
@@ -41,7 +42,7 @@ wire({
         create: {
             module: () => {
                 return new Promise(resolve => {
-                    setTimeout(resolve, 10000);
+                    setTimeout(resolve, 1000);
                 })
             },
             args: [
@@ -54,7 +55,15 @@ wire({
 
     console.log('DONE', result);
 
-    context.destroy();
+    const closeUp = async () => {
+        context.destroy().then(() => {
+            _.delay(process.exit, 1000, 0);
+        });
+    }
+
+    // closeUp();
+
+    process.on('SIGINT', closeUp);
 }).catch(error => {
     console.log('Went wrong:', error);
 })
