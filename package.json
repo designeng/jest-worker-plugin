@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tap --no-coverage"
+    "test": "tap --no-coverage",
+    "benchmark": "node ./benchmark"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "benchmark": "^2.1.4",
     "jest-worker": "^26.6.2"
   },
   "devDependencies": {
