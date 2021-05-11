@@ -47,3 +47,7 @@ wire({
     }
 })
 ```
+
+## Run benchmarks
+Run with workers and with simple Promise.all
+`npm run benchmark`
