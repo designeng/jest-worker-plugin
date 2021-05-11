@@ -3,6 +3,8 @@ const wire = require('wire');
 const _ = require('underscore');
 const JestWorkerPlugin = require('..');
 
+const NUM = 20;
+
 wire({
     $plugins: [
         JestWorkerPlugin
@@ -31,7 +33,16 @@ wire({
     result: {
         create: {
             module: (worker) => {
-                return worker.calculate(8)
+                return Promise.all([
+                    worker.calculate(NUM),
+                    worker.calculate(NUM),
+                    worker.calculate(NUM),
+                    worker.calculate(NUM),
+                    worker.calculate(NUM),
+                    worker.calculate(NUM),
+                    worker.calculate(NUM),
+                    worker.calculate(NUM),
+                ])
             },
             args: [
                 {$ref: 'worker'}
@@ -41,8 +52,7 @@ wire({
 }).then(context => {
     const { result } = context;
 
-    t.type(result, 'number');
-    t.equal(result, 21);
+    t.ok(result);
 
     const closeUp = async () => {
         context.destroy().then(() => {
