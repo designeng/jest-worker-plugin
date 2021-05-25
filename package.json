@@ -2,6 +2,7 @@
   "name": "jest-worker-plugin",
   "version": "1.0.2",
   "description": "",
+  "repository": "https://github.com/designeng/jest-worker-plugin",
   "main": "index.js",
   "scripts": {
     "test": "tap --no-coverage",
