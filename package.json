@@ -1,6 +1,6 @@
 {
   "name": "jest-worker-plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "repository": "https://github.com/designeng/jest-worker-plugin",
   "main": "index.js",
